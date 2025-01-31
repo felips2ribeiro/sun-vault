@@ -1,7 +1,7 @@
 <template>
   <v-app>
       <Sidebar />
-      <v-main  style="background-color: #edf2f8;">
+      <v-main  style=" min-height: 100vh; background-color: #edf2f8;">
         <Header style="background-color: #edf2f8;"/> 
         <router-view />
       </v-main>

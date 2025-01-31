@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card color="#f1f4fe" flat style="border: 8px solid white;"  max-width="900" max-height="479">
+    <v-card color="#f1f4fe" rounded="xl" flat style="border: 8px solid white;"  max-width="900" max-height="479">
       <v-card-text>
         <v-select v-model="selectedMonth" :items="months" label="Selecione o mês" ></v-select>
         <v-sheet color="#f1f4fe">

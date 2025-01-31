@@ -1,9 +1,8 @@
 <template>
     <v-container>
-      <v-card color="#f1f4fe" flat style="border: 8px solid white;"  max-width="900" max-height="500">
+      <v-card rounded="xl" flat style="border: 8px solid white;"  max-width="900" max-height="479">
         <Doughnut :data="chartData" :options="chartOptions" />
         <div class="chart-value mt-4 text-h4">${{ totalValor }}</div>
-        
       </v-card>
 
       

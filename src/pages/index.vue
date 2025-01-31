@@ -26,19 +26,19 @@
       </v-col>
 
       <v-col cols="6" md="">
-        <CardIndicator icon="carbon.png" title="Carbono Evitado" value="15.3 tCO²" />
+        <CardIndicator icon="mdi-molecule-co2" title="Carbono Evitado" value="15.3 tCO²" color="#fef1c5" iconColor="#c6ad79" :loading="loading"/>
       </v-col>
 
       <v-col cols="6" md="">
-        <CardIndicator icon="power.png" title="Potência Instantânea" value="3.2 kW" />
+        <CardIndicator icon="mdi-solar-power" title="Potência Instantânea" value="3.2 kW" color="#fbeff2" iconColor="#ffbfa2" :loading="loading"/>
       </v-col>
 
       <v-col cols="6" md="">
-        <CardIndicator icon="production.png" title="Produção Total" value="245 kW" />
+        <CardIndicator icon="mdi-solar-power-variant-outline" title="Produção Total" value="245 kW" color="#e5fff6" iconColor="#a3eabd" :loading="loading"/>
       </v-col>
 
       <v-col cols="6" md="">
-        <CardIndicator icon="refrigerator.png" title="Energia suficiente para:" value="120 Geladeiras" />
+        <CardIndicator icon="mdi-fridge-outline" title="Energia suficiente para:" value="120 Geladeiras" color="#f8eaff" iconColor="#d99dc5" :loading="loading"/>
       </v-col>
 
     </v-row>
@@ -46,11 +46,29 @@
     <v-row>
 
       <v-col cols="12" md="7">
-          <BarChart/>
+        <BarChart/>
       </v-col>
 
       <v-col cols="12" md="5">
         <PieChart/>
+        <v-card
+
+          class="mx-auto"
+          color="surface-variant"
+          max-width="340"
+          subtitle="17 Placas"
+          title="Felipe Casa"
+        >
+          <template v-slot:actions>
+            <v-btn
+              append-icon="mdi-chevron-right"
+              color="yellow-lighten-2"
+              text="Editar"
+              variant="outlined"
+              block
+            ></v-btn>
+          </template>
+        </v-card>
       </v-col>
       
     </v-row>
@@ -98,8 +116,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.v-icon {
-  color: #FF9800;
-}
+
 
 </style>
