@@ -1,80 +1,58 @@
 <template>
-    <div class="chart-container">
-      <div>{{ mes }}Mes</div>
-      <BarChart :data="chartData" :options="chartOptions"/>
-    </div>
-  </template>
-  
-  <script>
-  import { defineComponent, ref, onMounted } from 'vue';
-  import { Bar } from 'vue-chartjs';
-  import axios from 'axios';
-  import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js';
+  <v-container>
+    <v-card color="#f1f4fe" flat style="border: 8px solid white;"  max-width="900" max-height="479">
+      <v-card-text>
+        <v-select v-model="selectedMonth" :items="months" label="Selecione o mês" ></v-select>
+        <v-sheet color="#f1f4fe">
+          <v-sparkline :model-value="chartData" :gradient="['white', 'orange', 'red']" height="120" padding="24" line-width="2" smooth fill>
+            <template v-slot:label="item">
+              {{ item.value }} kWh
+            </template>
+          </v-sparkline>
+        </v-sheet>
+      </v-card-text>
+    </v-card>
+  </v-container>
+</template>
 
-  ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale);
-  
-  export default defineComponent({
-    components: {
-      BarChart: Bar
-    },
-    setup() {
-      const chartData = ref({
-        labels: [], // Labels dos dias
-        datasets: [
-          {
-            
-            label: 'Energia Gerada (kW)',
-            backgroundColor: '#42A5F5',
-            data: [] // Dados da energia gerada
-          }
-        ]
-      });
+<script>
+import axios from "axios";
 
-      const chartOptions = ref({
-        plugins: {
-            legend: {
-                display: false
-            }
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: '50%' // Faz um buraco no meio para mostrar o valor
-      });
+
+export default {
+  data() {
+    return {
+      selectedMonth: "janeiro", // Default to "janeiro"
+      months: [],
+      energia: {}, // Stores the energy data for all months
+    };
+  },
+  computed: {
+    chartData() {
+      const selectedMonthData = this.energia[this.selectedMonth] || [];
+
+      const firstFourWeeksData = selectedMonthData.slice(0, 4);
       
-    const fetchData = async () => {
-    try {
-        const response = await axios.get('http://localhost:5000/energia')
-        const jsonData = response.data
-
-        const labels = jsonData.map(item => item.date)
-        const energyData = jsonData.map(item => item.energy)
-
-        chartData.value = {
-            labels: labels,
-            datasets: [
-            {
-                label: 'Energia Gerada (kW)',
-                backgroundColor: '#42A5F5',
-                data: energyData
-            }
-            ]
-        };
-
-
-    } catch (error) {
-        console.error('Erro ao consumir a API', error)
+      return firstFourWeeksData.map(item => item.energy);
     }
+  },
+  mounted() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      try {
+        const response = await axios.get("http://localhost:5000/energia");
+        
+        // Assuming the structure of response data is the same as the one you provided
+        // Store the data under 'energia' with months as keys
+        
+        this.energia = response.data;
+        this.months = Object.keys(this.energia);
+      } catch (error) {
+        console.error("Erro ao buscar os dados de energia:", error);
+      }
     }
-
-    onMounted(() => {
-      fetchData();
-    });
-    return { chartData };
-    }
-  });
-  </script>
-  
-  <style scoped>
-  /* Estilos personalizados para o gráfico */
-  </style>
-  
+  }
+};
+</script>

@@ -1,8 +1,13 @@
 <template>
-    <div class="chart-container">
-      <Doughnut :data="chartData" :options="chartOptions" />
-      <div class="chart-value mt-7">${{ totalValor }}</div>
-    </div>
+    <v-container>
+      <v-card color="#f1f4fe" flat style="border: 8px solid white;"  max-width="900" max-height="500">
+        <Doughnut :data="chartData" :options="chartOptions" />
+        <div class="chart-value mt-4 text-h4">${{ totalValor }}</div>
+        
+      </v-card>
+
+      
+    </v-container>
   </template>
   
   <script>

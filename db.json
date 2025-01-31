@@ -1,40 +1,27 @@
 {
-  "energia": [
-    { "date": "01", "energy": 45 },
-    { "date": "02", "energy": 50 },
-    { "date": "03", "energy": 47 },
-    { "date": "04", "energy": 52 },
-    { "date": "05", "energy": 48 },
-    { "date": "06", "energy": 55 },
-    { "date": "07", "energy": 49 },
-    { "date": "08", "energy": 53 },
-    { "date": "09", "energy": 50 },
-    { "date": "10", "energy": 54 },
-    { "date": "11", "energy": 46 },
-    { "date": "12", "energy": 51 },
-    { "date": "13", "energy": 49 },
-    { "date": "14", "energy": 47 },
-    { "date": "15", "energy": 53 },
-    { "date": "16", "energy": 51 },
-    { "date": "17", "energy": 52 },
-    { "date": "18", "energy": 50 },
-    { "date": "19", "energy": 48 },
-    { "date": "20", "energy": 55 },
-    { "date": "21", "energy": 56 },
-    { "date": "22", "energy": 54 },
-    { "date": "23", "energy": 57 },
-    { "date": "24", "energy": 59 },
-    { "date": "25", "energy": 60 },
-    { "date": "26", "energy": 62 },
-    { "date": "27", "energy": 61 },
-    { "date": "28", "energy": 63 },
-    { "date": "29", "energy": 64 },
-    { "date": "30", "energy": 66 }
-  ],
-  
-    "valor": [
-      { "date": "janeiro", "value": 250 },
-      { "date": "fevereiro", "value": 220 }
+  "energia": {
+    "janeiro": [
+      { "week": "Semana 1", "energy": 250 },
+      { "week": "Semana 2", "energy": 215 },
+      { "week": "Semana 3", "energy": 330 },
+      { "week": "Semana 4", "energy": 300 }
+    ],
+    "fevereiro": [
+      { "week": "Semana 1", "energy": 220 },
+      { "week": "Semana 2", "energy": 225 },
+      { "week": "Semana 3", "energy": 240 },
+      { "week": "Semana 4", "energy": 255 }
+    ],
+    "março": [
+      { "week": "Semana 1", "energy": 100 },
+      { "week": "Semana 2", "energy": 300 },
+      { "week": "Semana 3", "energy": 150 },
+      { "week": "Semana 4", "energy": 270 }
     ]
-  
+  },
+  "valor": [
+    { "date": "janeiro", "value": 250 },
+    { "date": "fevereiro", "value": 220 },
+    { "date": "março", "value": 280 }
+  ]
 }
